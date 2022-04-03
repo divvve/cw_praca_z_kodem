@@ -1,0 +1,20 @@
+name: Sprawdzanie wersje Dockera i Pythona
+on: [push]
+jobs:
+   Check-python-ver:
+      runs-on: ubuntu-latest
+      steps:
+         - run: docker version
+         - run: python version
+         - name: Sprawdzanie wersji Dockera i Pythona
+   Use-Pylint:
+      runs-on: ubuntu-latest
+      steps:
+         - run: python -m pylint app.py
+         - name: Testowanie aplikacji za pomoca pylint
+   Build-Window:
+      runs-on: ubuntu-latest
+      steps:
+         - run: docker run -d -p 5000:5000 test-flask-app
+         - name: Budowanie obrazu aplikacji
+         
